@@ -1,0 +1,46 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Friend Finder</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  </head>
+  
+  <body>
+  
+      <div class="container">
+          <div class="jumbotron">
+              <h1>Friend Finder Match</h1>
+              <div class="match">
+                  <div id="matchInfo"></div>
+                      <div id="name">Name:</div><br>
+                      <span id="photo">Photo:</span><br>
+                      <span id="score">Match Score:</span>
+              </div>
+      
+  
+  <script type="text/javascript">
+      var newMatch = $("#match").val().trim();
+      $.get("/api/survey", function(data) {
+          if(data) {
+              $("#matchInfo").show();
+              $("#name").text(data.name);
+              $("#photo").text(data.photo);
+              $("#score").text(data.scores);
+          }
+          else {
+              $("#name").text("Try Again. No Matches.");
+              $("#matchInfo").hide();
+          }
+      });
+  </script>
+  
+  
+  
+  </div>
+</div>
+</body>
+</html>
